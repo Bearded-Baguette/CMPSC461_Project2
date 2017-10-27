@@ -146,25 +146,3 @@ void stateClosure(struct state currentState)
 void findGoTo() {} // This will add items to a state. The last part of this function should be to call stateClosure to close out the state.
 
 void reduceStack() {} // This will essentially pop the states backwards. Might have to use a stack to track what state we are creating.
-				if (in == '-') // Sets the leadTerminal equal to the value of the current rule (only the terminal value)
-				{
-					rules[ruleNum].leadTerminal.assign(rules[ruleNum].item.begin(), rules[ruleNum].item.end());
-				}
-
-				rules[ruleNum].item.push_back(in); // Adds a dot after the arrow in the rule
-
-				if (in == '>')
-				{
-					rules[ruleNum].item.push_back('.');
-				}
-			}
-		}
-		ruleNum++;
-		inputFile.get(in);
-	}
-}
-
-void createStateDiagram(vector<rule>& states)
-{
-
-}
