@@ -28,6 +28,23 @@ vector<string> terminals;
 vector<state> stateDiagram;
 vector<tuple<int, int>> edges;
 
+using namespace std;
+
+vector<string> terminals;
+vector<string> nonTerminals;
+vector<rule> states;
+vector<tuple<int, int>> edges;
+
+struct rule
+{
+	vector<char> item;
+	string leadTerminal;
+} rules[5];
+
+
+void readGrammar(ifstream &inputFile);
+void createStateDiagram(vector<rule>& states);
+
 int main()
 {
 	ifstream inputFile;
@@ -50,6 +67,8 @@ int main()
 	readGrammar(inputFile);
 	createStateDiagram();
 	cout << terminals.at(0);
+	cout << rules[0].leadTerminal;
+	cout << "Done";
 	return 0;
 }
 
@@ -61,6 +80,9 @@ void readGrammar(ifstream &inputFile)
 	while (!inputFile.eof())
 	{
 		
+	while (!inputFile.eof())
+	{
+		vector <char> newItem;
 		while (inputFile.peek() != '\n' && !inputFile.eof())
 		{
 			inputFile.get(in);
@@ -124,3 +146,25 @@ void stateClosure(struct state currentState)
 void findGoTo() {} // This will add items to a state. The last part of this function should be to call stateClosure to close out the state.
 
 void reduceStack() {} // This will essentially pop the states backwards. Might have to use a stack to track what state we are creating.
+				if (in == '-') // Sets the leadTerminal equal to the value of the current rule (only the terminal value)
+				{
+					rules[ruleNum].leadTerminal.assign(rules[ruleNum].item.begin(), rules[ruleNum].item.end());
+				}
+
+				rules[ruleNum].item.push_back(in); // Adds a dot after the arrow in the rule
+
+				if (in == '>')
+				{
+					rules[ruleNum].item.push_back('.');
+				}
+			}
+		}
+		ruleNum++;
+		inputFile.get(in);
+	}
+}
+
+void createStateDiagram(vector<rule>& states)
+{
+
+}
