@@ -1,3 +1,13 @@
+/*
+	Title: LR(0) Grammar Parser
+	Authors: Devon Graves, Sam Williams
+	Class: CMPSC 461
+	Date: 10/29/2017
+
+	All of the work done in this program is original work by the authors.
+*/
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
